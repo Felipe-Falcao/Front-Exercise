@@ -34,20 +34,6 @@ const ListEmploye: React.FC = () => {
           <Button>Cadastrar funcionário</Button>
         </Link>
       </ContainerButton>
-      {/* <Content>
-        {employees.map(employee => (
-          <CardEmployee
-            id={employee.id.substring(0, 6)}
-            link={[
-              `/editEmployee/${employee.branch_id}/${employee.id}`,
-              `/deleteEmployee/${employee.branch_id}/${employee.id}`,
-            ]}
-            name={employee.name}
-            branch={employee.branch_name}
-            key={employee.id}
-          />
-        ))}
-      </Content> */}
       <Table>
         {
           employees.map(employee => (
