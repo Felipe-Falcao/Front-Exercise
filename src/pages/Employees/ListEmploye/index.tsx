@@ -2,14 +2,13 @@
 import React, { useEffect, useState } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Link, useParams } from 'react-router-dom';
+import { FiEdit, FiTrash2 } from 'react-icons/fi';
 import Button from '../../../components/Button';
-
-import CardEmployee from '../../../components/CardEmployee';
+import ButtonActions from '../../../components/ButtonActions';
 import { ListEmployeesDTO } from '../../../interfaces/employees';
 import { ParamTypes } from '../../../interfaces/params';
-import api from '../../../services/api';
 
-import { Container, Content, ContainerButton, Header } from './styles';
+import { Container, ContainerButton, Header, Table, TextId, TextName, TextNumber, Buttons } from './styles';
 
 import getListEmployees from '../../../services/employees/getListEmployees';
 
@@ -35,7 +34,7 @@ const ListEmploye: React.FC = () => {
           <Button>Cadastrar funcionário</Button>
         </Link>
       </ContainerButton>
-      <Content>
+      {/* <Content>
         {employees.map(employee => (
           <CardEmployee
             id={employee.id.substring(0, 6)}
@@ -48,7 +47,25 @@ const ListEmploye: React.FC = () => {
             key={employee.id}
           />
         ))}
-      </Content>
+      </Content> */}
+      <Table>
+        {
+          employees.map(employee => (
+            <tr>
+              <TextId>
+                ID {`${employee.id.substring(0, 6)}  ${Math.floor(
+                  Math.random() * 65536)}`}
+              </TextId>
+              <TextName>{employee.name}</TextName>
+              <TextNumber>{employee.branch_name}</TextNumber>
+              <Buttons>
+                <ButtonActions icon={FiEdit} to={`/editEmployee/${employee.branch_id}/${employee.id}`} />
+                <ButtonActions icon={FiTrash2} to={`/deleteEmployee/${employee.branch_id}/${employee.id}`} />
+              </Buttons>
+            </tr>
+          ))
+        }
+      </Table>
     </Container>
   );
 };

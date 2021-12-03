@@ -13,29 +13,6 @@ export const Container = styled.div`
   margin-top: 20px;
 `;
 
-export const Content = styled.div`
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media (min-width: 1000px) {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: 1fr;
-    gap: 10px;
-  }
-
-  @media (min-width: 1900px) {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-template-rows: 1fr;
-    gap: 20px;
-  }
-`;
-
 export const Header = styled.div`
   width: 100%;
   display: flex;
@@ -64,4 +41,42 @@ export const ContainerButton = styled.div`
       max-width: 300px;
     }
   }
+`;
+
+export const Table = styled.table`
+  width: 60%;
+  border-collapse: separate;
+  border-spacing: 0 1em;
+
+  td {
+    padding: 2px 10px 2px 10px;
+    background-color: #E2E2E2;
+    color: #000;
+  }
+`;
+
+export const TextId = styled.td`
+  font-size: 0.7rem;
+  text-align: left;
+  max-width: 50px;
+  width: auto;
+  min-width: 10px;
+`;
+
+export const TextName = styled.td`
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: left;
+`;
+
+export const TextNumber = styled.td`
+  font-size: 0.8rem;
+  margin-left: 3rem;
+  text-align: end;
+`;
+
+export const Buttons = styled.td`
+  max-width: 50px;
+  width: auto;
+  min-width: 10px;
 `;
