@@ -61,7 +61,6 @@ const ListBranch: React.FC = () => {
             </tr>
           ))
         }
-
       </Table>
     </Container>
   );
