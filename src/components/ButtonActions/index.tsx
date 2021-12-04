@@ -8,6 +8,7 @@ type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
   icon?: React.ComponentType<IconBaseProps>;
   to: string;
+  color?: string;
 };
 
 const ButtonActions: React.FC<ButtonProps> = ({
@@ -15,11 +16,12 @@ const ButtonActions: React.FC<ButtonProps> = ({
   loading,
   icon: Icon,
   to,
+  color,
   ...rest
 }) => {
   return (
     <Link to={to}>
-      <Container type="button" {...rest}>
+      <Container color={color} type="button" {...rest}>
         {loading ? 'Carregando...' : children}
         {Icon && <Icon size={20} />}
       </Container>
