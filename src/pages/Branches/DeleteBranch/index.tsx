@@ -6,9 +6,6 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import Button from '../../../components/Button';
-import ButtonRed from '../../../components/ButtonRed';
-
-import api from '../../../services/api';
 import { useToast } from '../../../hooks/toast';
 
 import { ParamTypes } from '../../../interfaces/params';
@@ -52,7 +49,7 @@ const DeleteBranch: React.FC = () => {
           <Button type="submit">Sim</Button>
         </Form>
         <Link to="/listBranch">
-          <ButtonRed type="button">Não</ButtonRed>
+          <Button color="#c53030" type="button">Não</Button>
         </Link>
       </AnimationContainer>
     </Container>

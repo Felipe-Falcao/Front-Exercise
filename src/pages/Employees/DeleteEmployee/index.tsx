@@ -6,7 +6,6 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
 
 import Button from '../../../components/Button';
-import ButtonRed from '../../../components/ButtonRed';
 
 import api from '../../../services/api';
 import { useToast } from '../../../hooks/toast';
@@ -66,7 +65,7 @@ const DeleteEmployee: React.FC = () => {
 
         <DeleteContainer>
           <Link to={`/listEmployees/${branch_id}`}>
-            <ButtonRed type="button">Não</ButtonRed>
+            <Button color="#c53030" type="button">Não</Button>
           </Link>
         </DeleteContainer>
       </AnimationContainer>
