@@ -4,11 +4,12 @@ import { Container } from './styles';
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
   loading?: boolean;
+  color?: string;
 };
 
-const Button: React.FC<ButtonProps> = ({ children, loading, ...rest }) => {
+const Button: React.FC<ButtonProps> = ({ children, loading, color, ...rest }) => {
   return (
-    <Container type="button" {...rest}>
+    <Container color={color} type="button" {...rest}>
       {loading ? 'Carregando...' : children}
     </Container>
   );
