@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-types */
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { FiSearch, FiEdit, FiTrash2 } from 'react-icons/fi';
+import { FiEdit, FiTrash2, FiUsers } from 'react-icons/fi';
 import getListBranches from '../../../services/branches/getListBranches';
 
 import { ListBranchesDTO } from '../../../interfaces/branches';
@@ -54,7 +54,7 @@ const ListBranch: React.FC = () => {
               <TextName>{branch.name}</TextName>
               <TextNumber>{branch.total_staff} Funcionários</TextNumber>
               <Buttons>
-                <ButtonActions icon={FiSearch} to={`/listEmployees/${branch.id}`} />
+                <ButtonActions icon={FiUsers} to={`/listEmployees/${branch.id}`} />
                 <ButtonActions icon={FiEdit} to={`/editBranch/${branch.id}`} />
                 <ButtonActions color="#4B0082" icon={FiTrash2} to={`/deleteBranch/${branch.id}`} />
               </Buttons>
