@@ -65,7 +65,7 @@ const DeleteEmployee: React.FC = () => {
 
         <DeleteContainer>
           <Link to={`/listEmployees/${branch_id}`}>
-            <Button color="#c53030" type="button">Não</Button>
+            <Button color="#171717" type="button">Não</Button>
           </Link>
         </DeleteContainer>
       </AnimationContainer>

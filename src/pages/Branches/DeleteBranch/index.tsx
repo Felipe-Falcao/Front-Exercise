@@ -49,7 +49,7 @@ const DeleteBranch: React.FC = () => {
           <Button type="submit">Sim</Button>
         </Form>
         <Link to="/listBranch">
-          <Button color="#c53030" type="button">Não</Button>
+          <Button color="#171717" type="button">Não</Button>
         </Link>
       </AnimationContainer>
     </Container>
