@@ -70,12 +70,11 @@ export const TextName = styled.td`
 
 export const TextNumber = styled.td`
   font-size: 0.8rem;
-  margin-left: 3rem;
   text-align: end;
 `;
 
 export const Buttons = styled.td`
-  max-width: 50px;
+  max-width: 80px;
   width: auto;
   min-width: 10px;
 `;

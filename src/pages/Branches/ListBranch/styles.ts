@@ -51,12 +51,11 @@ export const TextName = styled.td`
 
 export const TextNumber = styled.td`
   font-size: 0.8rem;
-  margin-left: 3rem;
   text-align: end;
 `;
 
 export const Buttons = styled.td`
-  max-width: 90px;
+  max-width: 110px;
   width: auto;
   min-width: 10px;
 `;
