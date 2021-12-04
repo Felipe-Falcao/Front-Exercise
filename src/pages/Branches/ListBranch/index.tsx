@@ -6,11 +6,11 @@ import getListBranches from '../../../services/branches/getListBranches';
 
 import { ListBranchesDTO } from '../../../interfaces/branches';
 import api from '../../../services/api';
-import Button from '../../../components/Button';
+import ButtonHeader from '../../../components/ButtonHeader';
 
 import { useAuth } from '../../../hooks/auth';
 
-import { Container, ContainerButton, Table, TextId, TextName, TextNumber, Buttons } from './styles';
+import { Container, ContainerButton, Table, TextId, TextName, TextNumber, Buttons, Header } from './styles';
 import ButtonActions from '../../../components/ButtonActions';
 
 const ListBranch: React.FC = () => {
@@ -32,17 +32,17 @@ const ListBranch: React.FC = () => {
 
   return (
     <Container>
+      <Header>
+        <ContainerButton>
+          <Link to="/createBranch">
+            <ButtonHeader>Cadastrar filial</ButtonHeader>
+          </Link>
+        </ContainerButton>
+        <ContainerButton>
+          <ButtonHeader onClick={() => signOut()}>Deslogar</ButtonHeader>
+        </ContainerButton>
+      </Header>
       <h1>Filiais cadastradas</h1>
-      <ContainerButton onClick={() => signOut()}>
-        <Link to="/">
-          <Button>Deslogar</Button>
-        </Link>
-      </ContainerButton>
-      <ContainerButton>
-        <Link to="/createBranch">
-          <Button>Cadastrar filial</Button>
-        </Link>
-      </ContainerButton>
       <Table>
         {
           branches.map(branch => (

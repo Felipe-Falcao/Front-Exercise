@@ -8,24 +8,19 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  padding: 25px;
-  margin-top: 20px;
+  padding: 0 25px;
+`;
+
+export const Header = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-bottom: 2rem;
 `;
 
 export const ContainerButton = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media (min-width: 1000px) {
-    width: 100%;
-    align-items: flex-end;
-
-    button {
-      max-width: 300px;
-    }
-  }
+  margin: auto 1rem auto 1rem;
 `;
 
 export const Table = styled.table`
