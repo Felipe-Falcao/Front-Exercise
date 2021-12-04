@@ -46,7 +46,7 @@ const ListEmploye: React.FC = () => {
               <TextNumber>{employee.branch_name}</TextNumber>
               <Buttons>
                 <ButtonActions icon={FiEdit} to={`/editEmployee/${employee.branch_id}/${employee.id}`} />
-                <ButtonActions icon={FiTrash2} to={`/deleteEmployee/${employee.branch_id}/${employee.id}`} />
+                <ButtonActions color="#4B0082" icon={FiTrash2} to={`/deleteEmployee/${employee.branch_id}/${employee.id}`} />
               </Buttons>
             </tr>
           ))

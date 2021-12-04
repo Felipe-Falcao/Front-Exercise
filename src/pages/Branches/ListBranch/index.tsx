@@ -56,7 +56,7 @@ const ListBranch: React.FC = () => {
               <Buttons>
                 <ButtonActions icon={FiSearch} to={`/listEmployees/${branch.id}`} />
                 <ButtonActions icon={FiEdit} to={`/editBranch/${branch.id}`} />
-                <ButtonActions icon={FiTrash2} to={`/deleteBranch/${branch.id}`} />
+                <ButtonActions color="#4B0082" icon={FiTrash2} to={`/deleteBranch/${branch.id}`} />
               </Buttons>
             </tr>
           ))
