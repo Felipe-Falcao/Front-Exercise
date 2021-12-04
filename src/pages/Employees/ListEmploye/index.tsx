@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { FiArrowLeft } from 'react-icons/fi';
 import { Link, useParams } from 'react-router-dom';
 import { FiEdit, FiTrash2 } from 'react-icons/fi';
-import Button from '../../../components/Button';
+import ButtonHeader from '../../../components/ButtonHeader';
 import ButtonActions from '../../../components/ButtonActions';
 import { ListEmployeesDTO } from '../../../interfaces/employees';
 import { ParamTypes } from '../../../interfaces/params';
@@ -23,17 +23,17 @@ const ListEmploye: React.FC = () => {
   }, [id]);
   return (
     <Container>
+      <ContainerButton>
+        <Link to={`/createEmployee/${id}`}>
+          <ButtonHeader>Cadastrar funcionário</ButtonHeader>
+        </Link>
+      </ContainerButton>
       <Header>
         <Link to="/listBranch">
           <FiArrowLeft size={40} />
         </Link>
         <h1>Funcionários</h1>
       </Header>
-      <ContainerButton>
-        <Link to={`/createEmployee/${id}`}>
-          <Button>Cadastrar funcionário</Button>
-        </Link>
-      </ContainerButton>
       <Table>
         {
           employees.map(employee => (
