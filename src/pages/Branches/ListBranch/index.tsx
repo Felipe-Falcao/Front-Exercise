@@ -2,17 +2,18 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiEdit, FiTrash2, FiUsers } from 'react-icons/fi';
-import getListBranches from '../../../services/branches/getListBranches';
 import { ListBranchesDTO } from '../../../interfaces/branches';
 import api from '../../../services/api';
 import ButtonHeader from '../../../components/ButtonHeader';
 import { useAuth } from '../../../hooks/auth';
+import { useApp } from '../../../hooks/app_context';
 import { Container, ContainerButton, Table, TextId, TextName, TextNumber, Buttons, Header } from './styles';
 import ButtonActions from '../../../components/ButtonActions';
 
 const ListBranch: React.FC = () => {
   const [branches, SetBranches] = useState<ListBranchesDTO[]>([]);
   const { signOut } = useAuth();
+  const { getListBranches } = useApp();
 
   useEffect(() => {
     api.get(`/branches/index`).then(response => {
@@ -44,8 +45,7 @@ const ListBranch: React.FC = () => {
             branches.map(branch => (
               <tr>
                 <TextId>
-                  ID {`${branch.id.substring(0, 4)}  ${Math.floor(
-                    Math.random() * 65536)}`}
+                  ID {`${branch.id.substring(0, 4)}`}
                 </TextId>
                 <TextName>{branch.name}</TextName>
                 <TextNumber>{branch.total_staff} Funcionários</TextNumber>

@@ -4,22 +4,20 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { Link, useHistory } from 'react-router-dom';
-
 import { FiArrowLeft } from 'react-icons/fi';
-import api from '../../../services/api';
 import getValidationErrors from '../../../utils/getValidationErrors';
-
 import { BranchFormData } from '../../../interfaces/branches';
 import { useToast } from '../../../hooks/toast';
-
+import { useApp } from '../../../hooks/app_context'
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
-
 import { Container, AnimationContainer, Header } from './styles';
 
 const CreateBranch: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { addToast } = useToast();
+  const { registerBranch } = useApp();
+
   const history = useHistory();
 
   const handleSubmit = useCallback(
@@ -35,7 +33,7 @@ const CreateBranch: React.FC = () => {
           abortEarly: false,
         });
 
-        // await api.post('/branches/create', data);
+        registerBranch(data.name);
 
         history.push('/listBranch');
 

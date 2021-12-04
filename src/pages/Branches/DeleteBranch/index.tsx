@@ -4,18 +4,17 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-
 import Button from '../../../components/Button';
 import { useToast } from '../../../hooks/toast';
-
+import { useApp } from '../../../hooks/app_context'
 import { ParamTypes } from '../../../interfaces/params';
-
 import { Container, AnimationContainer, Header } from './styles';
 
 const DeleteBranch: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { id } = useParams<ParamTypes>();
   const { addToast } = useToast();
+  const { removeBranch } = useApp();
 
   const history = useHistory();
 
@@ -23,7 +22,7 @@ const DeleteBranch: React.FC = () => {
     try {
       formRef.current?.setErrors({});
 
-      // await api.delete(`/branches/delete/${id}`);
+      removeBranch(`${id}`);
 
       history.push(`/listBranch`);
     } catch (err) {

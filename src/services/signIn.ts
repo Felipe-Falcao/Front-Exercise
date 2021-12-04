@@ -18,19 +18,21 @@ interface ResponseData {
 }
 
 export default function signIn({ idUser, password }: ReceivedData): Promise<ResponseData> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({
-        data: {
-          user: {
-            id: 'id_user',
-            name: 'name_user',
-            avatar_url: 'avatar_user',
-            email: 'mail_user',
-          },
-          token: 'psm2jb4_ias¨@'
-        }
-      });
-    }, 1000);
-  });
+  if (idUser === 'admin' && password === 'admin')
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        resolve({
+          data: {
+            user: {
+              id: 'id_user',
+              name: 'name_user',
+              avatar_url: 'avatar_user',
+              email: 'mail_user',
+            },
+            token: 'psm2jb4_ias¨@'
+          }
+        });
+      }, 1000);
+    });
+  throw new Error();
 }

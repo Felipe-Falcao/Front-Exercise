@@ -4,19 +4,14 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { Link, useHistory, useParams } from 'react-router-dom';
-
 import { FiArrowLeft } from 'react-icons/fi';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
-
-import api from '../../../services/api';
 import { useToast } from '../../../hooks/toast';
-
+import { useApp } from '../../../hooks/app_context';
 import getValidationErrors from '../../../utils/getValidationErrors';
-
 import { ListBranchesDTO, BranchFormData } from '../../../interfaces/branches';
 import { ParamTypes } from '../../../interfaces/params';
-
 import { Container, AnimationContainer, Header } from './styles';
 
 import showBranches from '../../../services/branches/showBranches'
@@ -25,6 +20,7 @@ const EditBranch: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { id } = useParams<ParamTypes>();
   const { addToast } = useToast();
+  const { editBranch } = useApp();
 
   const history = useHistory();
   const [branch, SetBranch] = useState<ListBranchesDTO>();
@@ -46,9 +42,8 @@ const EditBranch: React.FC = () => {
         await schema.validate(data, {
           abortEarly: false,
         });
-        console.log(data);
 
-        // await api.put(`/branches/update/${id}`, data);
+        editBranch(id, data.name);
 
         history.push(`/listBranch`);
       } catch (err) {
@@ -86,11 +81,6 @@ const EditBranch: React.FC = () => {
           <h1>Editar Filial</h1>
 
           <Input name="name" placeholder="Nome da filial" />
-          <Input
-            name="total_staff"
-            value={branch?.total_staff}
-            defaultValue={branch?.total_staff}
-          />
 
           <Button type="submit">Editar</Button>
         </Form>
