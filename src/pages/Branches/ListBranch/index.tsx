@@ -45,7 +45,7 @@ const ListBranch: React.FC = () => {
             branches.map(branch => (
               <tr>
                 <TextId>
-                  ID {`${branch.id.substring(0, 4)}`}
+                  ID {`${branch.id}`}
                 </TextId>
                 <TextName>{branch.name}</TextName>
                 <TextNumber>{branch.total_staff} Funcionários</TextNumber>
