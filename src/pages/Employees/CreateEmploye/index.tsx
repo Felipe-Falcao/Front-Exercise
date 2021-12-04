@@ -45,8 +45,8 @@ const CreateEmploye: React.FC = () => {
 
         addToast({
           type: 'success',
-          title: 'Funcionário cadastrada!',
-          description: 'Funcionário cadastrada com sucesso!',
+          title: 'Funcionário cadastrado!',
+          description: 'Funcionário cadastrado com sucesso!',
         });
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
