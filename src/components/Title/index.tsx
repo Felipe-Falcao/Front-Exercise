@@ -1,5 +1,5 @@
 import React from 'react';
-import Logo from '../../assets/images/logo.svg'
+import Logo from '../../assets/images/logo-white.svg'
 import { Container, Items } from './styles';
 
 const Title: React.FC = () => (

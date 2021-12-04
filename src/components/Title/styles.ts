@@ -19,7 +19,6 @@ export const Items = styled.div`
     font-size: 50px;
     font-family: 'Courier New', Courier, monospace;
     font-weight: 800;
-    color: #9400D3;
   }
 
   img {
@@ -29,6 +28,5 @@ export const Items = styled.div`
 
   span {
     font-weight: 500;
-    color: #9400D3;
   }
 `;
