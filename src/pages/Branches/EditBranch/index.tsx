@@ -10,23 +10,25 @@ import Button from '../../../components/Button';
 import { useToast } from '../../../hooks/toast';
 import { useApp } from '../../../hooks/app_context';
 import getValidationErrors from '../../../utils/getValidationErrors';
-import { ListBranchesDTO, BranchFormData } from '../../../interfaces/branches';
+import { ListBranchesDTO, BranchFormData, Branch } from '../../../interfaces/branches';
 import { ParamTypes } from '../../../interfaces/params';
 import { Container, AnimationContainer, Header } from './styles';
 
 import showBranches from '../../../services/branches/showBranches'
 
+
+
 const EditBranch: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const { id } = useParams<ParamTypes>();
   const { addToast } = useToast();
-  const { editBranch } = useApp();
+  const { editBranch, getBranch } = useApp();
 
   const history = useHistory();
-  const [branch, SetBranch] = useState<ListBranchesDTO>();
+  const [branch, SetBranch] = useState<Branch>();
 
   useEffect(() => {
-    const branchs = showBranches({ id });
+    const branchs = getBranch(id);
     SetBranch(branchs);
   }, [id]);
 

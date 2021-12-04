@@ -1,15 +1,9 @@
 import React, { createContext, useCallback, useContext, useState } from 'react';
-import { ListEmployeesDTO } from '../interfaces/employees';
-
-interface Branch {
-  id: string;
-  name: string;
-  total_staff: string;
-  employees: ListEmployeesDTO[];
-}
+import { Branch } from '../interfaces/branches';
 
 interface AppContextData {
   getListBranches(): Branch[];
+  getBranch(id: string): Branch;
   registerBranch(name: string): void;
   removeBranch(id: string): void;
   editBranch(id: string, name: string): void;
@@ -22,6 +16,18 @@ const AppContextProvider: React.FC = ({ children }) => {
 
   function getListBranches(): Branch[] {
     return data;
+  }
+
+  function getBranch(id: string): Branch {
+    let index = 0;
+    data.find(item => {
+      if (item.id === id) {
+        index = data.indexOf(item)
+        return index;
+      }
+      return null;
+    })
+    return data[index];
   }
 
   function registerBranch(name: string): void {
@@ -58,7 +64,7 @@ const AppContextProvider: React.FC = ({ children }) => {
 
   return (
     <AppContext.Provider
-      value={{ getListBranches, registerBranch, removeBranch, editBranch }}
+      value={{ getListBranches, getBranch, registerBranch, removeBranch, editBranch }}
     >
       {children}
     </AppContext.Provider>
