@@ -4,20 +4,16 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
 import { Link, useHistory, useParams } from 'react-router-dom';
-
 import { FiArrowLeft } from 'react-icons/fi';
-import api from '../../../services/api';
 import getValidationErrors from '../../../utils/getValidationErrors';
-
 import {
   EmployeeFormData,
   ListEmployeesDTO,
 } from '../../../interfaces/employees';
 import { useToast } from '../../../hooks/toast';
-
+import { useApp } from '../../../hooks/app_context';
 import Input from '../../../components/Input';
 import Button from '../../../components/Button';
-
 import { Container, AnimationContainer, Header } from './styles';
 import { ParamDoubleIdTypes } from '../../../interfaces/params';
 
@@ -26,15 +22,14 @@ const EditEmployee: React.FC = () => {
   const { branch_id, id } = useParams<ParamDoubleIdTypes>();
 
   const { addToast } = useToast();
+  const { getEmployee, editEmployee } = useApp();
   const history = useHistory();
 
-  const [employee, SetEmployee] = useState<ListEmployeesDTO>();
-  console.log(employee);
+  const [employee, setEmployee] = useState<ListEmployeesDTO>();
 
   useEffect(() => {
-    api.get(`/employees/show/${branch_id}/${id}`).then(response => {
-      SetEmployee(response.data);
-    });
+    const employeeData = getEmployee(branch_id, id);
+    setEmployee(employeeData);
   }, [branch_id, id]);
 
   const handleSubmit = useCallback(
@@ -51,7 +46,7 @@ const EditEmployee: React.FC = () => {
           abortEarly: false,
         });
 
-        // await api.put(`/employees/update/${employee?.branch_id}/${id}`, data);
+        editEmployee(data.name, data.branch_name, id);
 
         history.push(`/listEmployees/${employee?.branch_id}`);
 

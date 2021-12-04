@@ -7,19 +7,18 @@ import ButtonHeader from '../../../components/ButtonHeader';
 import ButtonActions from '../../../components/ButtonActions';
 import { ListEmployeesDTO } from '../../../interfaces/employees';
 import { ParamTypes } from '../../../interfaces/params';
+import { useApp } from '../../../hooks/app_context';
 
 import { Container, ContainerButton, Header, Table, TextId, TextName, TextNumber, Buttons } from './styles';
-
-import getListEmployees from '../../../services/employees/getListEmployees';
 
 const ListEmploye: React.FC = () => {
   const [employees, setEmployees] = useState<ListEmployeesDTO[]>([]);
   const { id } = useParams<ParamTypes>();
+  const { getListEmployees } = useApp();
 
   useEffect(() => {
-    const employeesList = getListEmployees();
+    const employeesList = getListEmployees(`${id}`);
     setEmployees(employeesList);
-
   }, [id]);
   return (
     <Container>

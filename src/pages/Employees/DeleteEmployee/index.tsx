@@ -4,14 +4,10 @@ import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import { Link, useHistory, useParams } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
-
 import Button from '../../../components/Button';
-
-import api from '../../../services/api';
 import { useToast } from '../../../hooks/toast';
-
+import { useApp } from '../../../hooks/app_context';
 import { ParamDoubleIdTypes } from '../../../interfaces/params';
-
 import {
   Container,
   AnimationContainer,
@@ -23,6 +19,7 @@ const DeleteEmployee: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
 
   const { addToast } = useToast();
+  const { removeEmployee } = useApp();
   const { branch_id, id } = useParams<ParamDoubleIdTypes>();
 
   const history = useHistory();
@@ -31,7 +28,7 @@ const DeleteEmployee: React.FC = () => {
     try {
       formRef.current?.setErrors({});
 
-      // await api.delete(`/employees/delete/${branch_id}/${id}`);
+      removeEmployee(id);
 
       addToast({
         type: 'success',

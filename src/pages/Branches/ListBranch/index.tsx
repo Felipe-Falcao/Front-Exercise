@@ -3,7 +3,6 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiEdit, FiTrash2, FiUsers } from 'react-icons/fi';
 import { ListBranchesDTO } from '../../../interfaces/branches';
-import api from '../../../services/api';
 import ButtonHeader from '../../../components/ButtonHeader';
 import { useAuth } from '../../../hooks/auth';
 import { useApp } from '../../../hooks/app_context';
@@ -16,10 +15,6 @@ const ListBranch: React.FC = () => {
   const { getListBranches } = useApp();
 
   useEffect(() => {
-    api.get(`/branches/index`).then(response => {
-      SetBranches(response.data);
-    });
-
     const getBranches = getListBranches();
     SetBranches(getBranches);
 
