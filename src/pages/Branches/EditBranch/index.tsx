@@ -50,7 +50,7 @@ const EditBranch: React.FC = () => {
 
         // await api.put(`/branches/update/${id}`, data);
 
-        history.push(`/listEmployees/${id}`);
+        history.push(`/listBranch`);
       } catch (err) {
         if (err instanceof Yup.ValidationError) {
           const errors = getValidationErrors(err);
@@ -73,7 +73,7 @@ const EditBranch: React.FC = () => {
   return (
     <Container>
       <Header>
-        <Link to={`/listEmployees/${id}`}>
+        <Link to="/listBranch">
           <FiArrowLeft size={40} />
         </Link>
       </Header>
