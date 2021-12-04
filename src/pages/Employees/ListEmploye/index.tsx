@@ -36,20 +36,22 @@ const ListEmploye: React.FC = () => {
       </Header>
       <Table>
         {
-          employees.map(employee => (
-            <tr>
-              <TextId>
-                ID {`${employee.id.substring(0, 6)}  ${Math.floor(
-                  Math.random() * 65536)}`}
-              </TextId>
-              <TextName>{employee.name}</TextName>
-              <TextNumber>{employee.branch_name}</TextNumber>
-              <Buttons>
-                <ButtonActions icon={FiEdit} to={`/editEmployee/${employee.branch_id}/${employee.id}`} />
-                <ButtonActions color="#4B0082" icon={FiTrash2} to={`/deleteEmployee/${employee.branch_id}/${employee.id}`} />
-              </Buttons>
-            </tr>
-          ))
+          employees.length > 0
+            ? employees.map(employee => (
+              <tr>
+                <TextId>
+                  ID {`${employee.id.substring(0, 6)}  ${Math.floor(
+                    Math.random() * 65536)}`}
+                </TextId>
+                <TextName>{employee.name}</TextName>
+                <TextNumber>{employee.branch_name}</TextNumber>
+                <Buttons>
+                  <ButtonActions icon={FiEdit} to={`/editEmployee/${employee.branch_id}/${employee.id}`} />
+                  <ButtonActions color="#4B0082" icon={FiTrash2} to={`/deleteEmployee/${employee.branch_id}/${employee.id}`} />
+                </Buttons>
+              </tr>
+            ))
+            : <p>Não há funcionários cadastrados no momento.</p>
         }
       </Table>
     </Container>
