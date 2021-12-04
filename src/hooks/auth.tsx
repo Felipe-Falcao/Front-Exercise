@@ -15,7 +15,7 @@ interface AuthState {
 }
 
 interface SignInCredentials {
-  email: string;
+  idUser: string;
   password: string;
 }
 
@@ -42,9 +42,9 @@ const AuthProvider: React.FC = ({ children }) => {
     return {} as AuthState;
   });
 
-  const signIn = useCallback(async ({ email, password }) => {
+  const signIn = useCallback(async ({ idUser, password }) => {
     const response = await signInMockApi({
-      email,
+      idUser,
       password,
     });
 

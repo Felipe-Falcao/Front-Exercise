@@ -3,7 +3,7 @@ import { shade } from 'polished';
 
 export const Container = styled.div`
   width: 100%;
-
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,14 +11,19 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  width: 100%;
-
+  width: 60%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  margin: auto;
 
-
+  @media(max-width: 1000px) {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+  }
 
   form {
     margin: 80px 0;

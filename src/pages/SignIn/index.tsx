@@ -1,22 +1,18 @@
 import React, { useCallback, useRef } from 'react';
-import { FiLogIn, FiMail, FiLock } from 'react-icons/fi';
+import { FiUser, FiLock } from 'react-icons/fi';
 import { FormHandles } from '@unform/core';
 import { Form } from '@unform/web';
 import * as Yup from 'yup';
-import { Link, useHistory } from 'react-router-dom';
-
+import { useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/auth';
 import { useToast } from '../../hooks/toast';
 import getValidationErrors from '../../utils/getValidationErrors';
-
-import Input from '../../components/Input';
-import Button from '../../components/Button';
-import Title from '../../components/Title';
+import { Input, Button, Title } from '../../components';
 
 import { Container, Content } from './styles';
 
 interface SignInFormData {
-  email: string;
+  user: string;
   password: string;
 }
 
@@ -34,9 +30,7 @@ const SignIn: React.FC = () => {
         formRef.current?.setErrors({});
 
         const schema = Yup.object().shape({
-          email: Yup.string()
-            .email('Digite um e-mail válido')
-            .required('E-mail obrigatório'),
+          user: Yup.string().required('Usuário obrigatório'),
           password: Yup.string().required('Senha obrigatória'),
         });
 
@@ -45,7 +39,7 @@ const SignIn: React.FC = () => {
         });
 
         await signIn({
-          email: data.email,
+          idUser: data.user,
           password: data.password,
         });
 
@@ -75,25 +69,15 @@ const SignIn: React.FC = () => {
         <Title />
         <Form ref={formRef} onSubmit={handleSubmit}>
           <h1>Faça seu login</h1>
-
-          <Input name="email" icon={FiMail} placeholder="E-mail" />
-
+          <Input name="user" icon={FiUser} placeholder="Usuário" />
           <Input
             name="password"
             icon={FiLock}
             type="password"
             placeholder="Senha"
           />
-
           <Button type="submit">Entrar</Button>
-
-          <Link to="/forgot-password">Esqueci minha senha</Link>
         </Form>
-
-        <Link to="/signup">
-          <FiLogIn />
-          Criar conta
-        </Link>
       </Content>
     </Container>
   );

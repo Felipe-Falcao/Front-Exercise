@@ -1,5 +1,5 @@
 interface ReceivedData {
-  email: string;
+  idUser: string;
   password: string;
 }
 
@@ -17,7 +17,7 @@ interface ResponseData {
   }
 }
 
-export default function signIn({ email, password }: ReceivedData): Promise<ResponseData> {
+export default function signIn({ idUser, password }: ReceivedData): Promise<ResponseData> {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
